@@ -1,0 +1,19 @@
+.input {
+    color: var(--text-grey);
+    background: none;
+    font-style: normal;
+    font-family: var(--font);
+    border-radius: 10px;
+    border: 1px solid #EEE;
+    background: #FFF;
+    box-shadow: 15px 20px 45px 0 rgba(233, 233, 233, 0.25);
+    font-weight: 400;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    font-size: 17px;
+}
+
+.input:focus {
+    outline: none;
+}

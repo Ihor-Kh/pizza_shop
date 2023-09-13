@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ol, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+:root {
+    font-family: 'Open Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    min-height: 100vh;
+
+    /*color-scheme: light dark;*/
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+
+    --font: 'Open Sans';
+    --primary: rgba(254, 114, 76, 1);
+    --primary-hover: rgb(219, 75, 36);
+    --text: rgba(0, 0, 0, 1);
+    --text-grey: rgba(91, 91, 94, 1);
+    --text-light: rgba(255, 255, 255, 1);
+    --separator-color: #F1F2F3;
+}
