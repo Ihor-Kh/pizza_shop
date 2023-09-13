@@ -19,11 +19,18 @@
     margin-bottom: 50px;
 }
 
-.user_img {
+.user_avatar {
     width: 90px;
     height: 90px;
     border-radius: 50%;
     background-color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.user_email {
+    color: var(--text-grey);
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .user_name {

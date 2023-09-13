@@ -23,10 +23,10 @@ function Account() {
 		<div className={styles.layout_account}>
 			<div className={styles.left_navigation}>
 				<div>
-					<img className={styles.user_img} src="/img/user_logo.png" alt="Иконка аккаунта"/>
+					<img className={styles.user_avatar} src="/img/user_logo.png" alt="Иконка аккаунта"/>
 					<div className={styles.user_inform}>
 						<div className={styles.user_name}>IhorKh</div>
-						<div>ihorkh@gmail.com</div>
+						<div className={styles.user_email}>ihorkh@gmail.com</div>
 					</div>
 					<nav>
 						<ul className={styles.menu}>
@@ -42,7 +42,10 @@ function Account() {
 					</nav>
 				</div>
 				<div>
-					<Button style={{paddingLeft: '14px'}}><img style={{ marginRight: '10px' }} src="/img/out.svg" alt="Выход"/>Выйти</Button>
+					<Button style={{paddingLeft: '14px'}}>
+						<img style={{ marginRight: '10px' }} src="/img/out.svg" alt="Выход"/>
+						Выйти
+					</Button>
 				</div>
 			</div>
 			<div>
