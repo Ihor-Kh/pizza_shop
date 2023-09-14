@@ -1,7 +1,7 @@
 import styles from './FindInput.module.css';
 
 import { ForwardedRef, forwardRef } from "react";
-import { FindInputProps } from "./FindInput.ts";
+import { FindInputProps } from "./FindInput.props.ts";
 
 const FindInput = forwardRef(function Input({ className, isValid = true, ...props }: FindInputProps, ref: ForwardedRef<HTMLInputElement>) {
 	return (
