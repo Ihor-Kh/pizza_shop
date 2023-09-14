@@ -2,9 +2,8 @@
     display: flex;
     flex-direction: row;
     min-height: 100vh;
-    max-width: 1000px;
+    max-width: 1055px;;
     margin: 0 auto;
-
 }
 
 .left_navigation {
@@ -13,6 +12,11 @@
     flex-direction: column;
     justify-content: space-between;
     border-right: 1px solid var(--separator-color);
+}
+
+.main_container {
+    padding: 34px 64px;
+    width: 100%;
 }
 
 .user_inform {
@@ -61,6 +65,7 @@
     line-height: normal;
 }
 
-.link > a:hover {
-    color: var(--primary);
+.link > a:hover, .active {
+    color: var(--primary) !important;
 }
+

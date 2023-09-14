@@ -1,0 +1,32 @@
+
+.input {
+    color: var(--text-grey);
+    font-weight: 400;
+    width: 100%;
+    max-width: 500px;
+    font-size: 14px;
+    /*padding: 14px 0;*/
+    min-width: 255px;
+
+
+    border: 1px solid #EFEFEF;
+    background: rgba(252, 252, 253, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 16px 18px 16px 44px;
+    border-radius: 10px;
+}
+
+.wrapper_input {
+    position: relative;
+}
+
+.search_icon {
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+}

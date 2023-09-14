@@ -1,9 +1,10 @@
 import styles from './Account.module.css';
 
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Button from "../../components/Button/Button.tsx";
 
 function Account() {
+	// const location = useLocation();
 
 	const navigation = [
 		{
@@ -32,9 +33,9 @@ function Account() {
 						<ul className={styles.menu}>
 							{
 								navigation.map((item) => (
-									<li className={styles.link}>
+									<li className={`${styles.link} `} key={item.link}>
 										<img src={ `/img/${ item.icon }.svg` } alt={ item.icon }/>
-										<Link to={ item.link }>{ item.title }</Link>
+										<NavLink className={({ isActive }) => isActive ? styles.active : ''} to={ item.link }>{ item.title }</NavLink>
 									</li>
 								))
 							}
@@ -48,7 +49,7 @@ function Account() {
 					</Button>
 				</div>
 			</div>
-			<div>
+			<div className={styles.main_container}>
 				<Outlet/>
 			</div>
 		</div>

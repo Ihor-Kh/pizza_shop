@@ -14,8 +14,19 @@ a {
     text-decoration: none;
     color: inherit;
 }
+input {
+    color: var(--text-grey);
+    background: none;
+    font-style: normal;
+    font-family: var(--font);
+    font-weight: 400;
+    width: 100%;
+    border: none;
+}
 
-
+input:focus {
+    outline: none;
+}
 
 :root {
     font-family: 'Open Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
