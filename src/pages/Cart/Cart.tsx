@@ -6,6 +6,9 @@ function Cart() {
 	return (
 		<>
 			<HeaderPage title='Корзина'/>
+			<div style={{width: '100%'}}>
+
+			</div>
 		</>
 	);
 }

@@ -1,9 +1,9 @@
 import styles from './HeaderPage.module.css';
 import { TitlePage } from "./HeaderPage.props.ts";
 
-function HeaderPage({title, children}: TitlePage) {
+function HeaderPage({title, children, style}: TitlePage) {
 	return (
-		<div className={styles.header}>
+		<div style={style} className={styles.header}>
 			<h1 className={styles.title}>{ title }</h1>
 			<div>
 				{ children }

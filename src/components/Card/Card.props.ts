@@ -1,12 +1,6 @@
+import { Product } from "../../interfaces/product.interface.ts";
 
 
 export interface CardProps {
-	card: {
-		id: number
-		name: string
-		description: string
-		image: string
-		price: number
-		rating: number
-	}
+	card: Product;
 }

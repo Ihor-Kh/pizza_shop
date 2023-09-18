@@ -3,7 +3,7 @@
 function Error() {
 	return (
 		<>
-            Error
+            Error - Алярм вырубай
 		</>
 	);
 }

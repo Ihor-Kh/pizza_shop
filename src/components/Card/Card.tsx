@@ -6,7 +6,9 @@ function card({ card }: CardProps) {
 	return (
 		<Link to={ `/product/${card.id}` }>
 			<div className={ styles.wrapper }>
-				<div className={ styles.inform } style={ { backgroundImage: 'url("/img/bg_card.png")' } }>
+				{/*{ card.image }*/}
+				{/*<div className={ styles.inform } style={{ backgroundImage: `url(${card.image})`}}>*/}
+					<div className={ styles.inform } style={ { backgroundImage: 'url("/img/bg_card.png")' } }>
 					<div className={ styles.head }>
 						<div className={ styles.price }>
 							{ card.price } <span className={ styles.price_currency }>₴</span>
@@ -26,7 +28,7 @@ function card({ card }: CardProps) {
 						{ card.name }
 					</div>
 					<div className={ styles.description }>
-						{ card.description }
+						{ card.ingredients.join(', ') }
 					</div>
 				</div>
 			</div>

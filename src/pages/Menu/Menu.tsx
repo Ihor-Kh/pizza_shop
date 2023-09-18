@@ -1,27 +1,52 @@
-// import styles from './Menu.module.css';
+import styles from './Menu.module.css';
 
 import HeaderPage from "../../components/HeaderPage/HeaderPage.tsx";
 import FindInput from "../../components/FindInput/FindInput.tsx";
 import Card from "../../components/Card/Card.tsx";
+import { Product } from "../../interfaces/product.interface.ts";
+import { useEffect, useState } from "react";
+import axios, { AxiosError } from "axios";
 
 function Menu() {
 
-	const card = {
-		id: 1,
-		price: 100,
-		rating: 4,
-		name: 'Борщ',
-		description: 'Суп с капустой и свеклой',
-		image: 'https://eda.ru/img/eda/c620x415i/s2.eda.ru/StaticContent/Photos/120131085053/120213144558/p_O.jpg'
+	const [products, setProducts] = useState<Product[]>([])
+	const [isLoading, setIsLoading] = useState<boolean>(false)
+	const [error, setError] = useState<string | undefined>()
+
+	const getMenu = async () => {
+		try {
+			setIsLoading(true)
+			await new Promise((resolve) => setTimeout(resolve, 1000))
+
+			const { data } = await axios.get<Product[]>('https://purpleschool.ru/pizza-api-demo/products');
+			setProducts(data)
+			setIsLoading(false)
+		} catch (e) {
+			console.error(e)
+			if ( e instanceof AxiosError) {
+				setError(e.message)
+			}
+			setIsLoading(false)
+		}
 	}
+
+	useEffect(() => {
+		getMenu()
+	}, [])
 
 	return (
 		<>
-			<HeaderPage title='Меню'>
-				<FindInput placeholder='Введите блюдо или состав' />
+			<HeaderPage title='Меню' style={ { marginBottom: '50px' } }>
+				<FindInput placeholder='Введите блюдо или состав'/>
 			</HeaderPage>
-			<div>
-				<Card card={ card }/>
+			<div className={ styles.menu }>
+				{ error && 'Ошибка загрузки меню'}
+				{ isLoading && 'Загрузка меню ...'}
+				{ !isLoading && products.map((product) => (
+					<Card card={ product } key={ product.id }/>
+				)) }
+
+
 			</div>
 		</>
 	);

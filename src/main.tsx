@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 // import App from './App.tsx'
 import './index.css'
-import Menu from "./pages/Menu/Menu.tsx";
+// import Menu from "./pages/Menu/Menu.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
 import Error from "./pages/Error/Error.tsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, defer, RouterProvider } from "react-router-dom";
 import Account from "./layouts/Account/Account.tsx";
 import Product from "./pages/Product/Product.tsx";
+import axios from "axios";
+
+const Menu = React.lazy(() => import('./pages/Menu/Menu'))
 
 const router = createBrowserRouter([
 	{
@@ -16,7 +19,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Menu/>
+				element:<Suspense fallback={<>Loading...</>}><Menu/></Suspense>
 			},
 			{
 				path: '/cart',
@@ -24,7 +27,20 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/product/:id',
-				element: <Product/>
+				element: <Product/>,
+				errorElement: <Error/>,
+				loader: async ({ params }) => {
+					return defer({
+						data: new Promise((resolve, reject) => {
+							setTimeout(() => {
+								axios.get(`https://purpleschool.ru/pizza-api-demo/products/${ params.id }`)
+									.then( data  => resolve(data))
+									.catch( error => reject(error))
+							}, 1000 )
+						})
+						// data: axios.get(`https://purpleschool.ru/pizza-api-demo/products/${ params.id }`).then( data  => data)
+					})
+				}
 			}
 		]
 	},
