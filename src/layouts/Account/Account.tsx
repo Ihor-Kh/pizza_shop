@@ -21,7 +21,7 @@ function Account() {
 	]
 
 	return (
-		<div className={styles.layout_account}>
+		<div className={styles.layout_account + ' container'}>
 			<div className={styles.left_navigation}>
 				<div>
 					<img className={styles.user_avatar} src="/img/user_logo.png" alt="Иконка аккаунта"/>

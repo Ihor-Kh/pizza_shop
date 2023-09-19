@@ -57,3 +57,14 @@ input:focus {
     --text-light: rgba(255, 255, 255, 1);
     --separator-color: #F1F2F3;
 }
+.container {
+    min-height: 100vh;
+    max-width: 1055px;;
+    margin: 0 auto;
+}
+.title {
+    color: var(--text);
+    font-size: 37px;
+    font-weight: 600;
+    line-height: 120%; /* 43.695px */
+}
