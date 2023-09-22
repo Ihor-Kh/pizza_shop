@@ -2,6 +2,10 @@ import styles from './Account.module.css';
 
 import { NavLink, Outlet } from "react-router-dom";
 import Button from "../../components/Button/Button.tsx";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/store.ts";
+import { usersActions } from "../../store/user.slice.ts";
+
 
 function Account() {
 	// const location = useLocation();
@@ -19,6 +23,14 @@ function Account() {
 			items: 0
 		}
 	]
+
+	const dispatch = useDispatch<AppDispatch>()
+
+
+
+	const logout = () => {
+		dispatch(usersActions.logout())
+	}
 
 	return (
 		<div className={styles.layout_account + ' container'}>
@@ -43,7 +55,7 @@ function Account() {
 					</nav>
 				</div>
 				<div>
-					<Button style={{paddingLeft: '14px'}}>
+					<Button style={{paddingLeft: '14px'}} onClick={logout}>
 						<img style={{ marginRight: '10px' }} src="/img/out.svg" alt="Выход"/>
 						Выйти
 					</Button>

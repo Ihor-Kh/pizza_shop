@@ -14,3 +14,7 @@ export function saveStorage<T>(key: string, value: T) {
 	const stringState = JSON.stringify(value)
 	localStorage.setItem(key, stringState)
 }
+
+export function removeStorage(key: string) {
+	localStorage.removeItem(key)
+}
