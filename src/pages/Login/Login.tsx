@@ -1,8 +1,8 @@
 import styles from './Login.module.css';
 import Button from "../../components/Button/Button.tsx";
 import ItemForm from "../../components/ItemForm/ItemForm.tsx";
-import { Link, useNavigate } from "react-router-dom";
-import { FormEvent, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FormEvent } from "react";
 // import axios, { AxiosError } from "axios";
 // import { PREFIX } from "../../helpers/api.ts";
 // import { LoginResponse } from "../../interfaces/auth.interface.ts";
@@ -22,14 +22,10 @@ type Login = {
 function Login() {
 
 	// const [error, setError] = useState<string | undefined>()
-	const navigate = useNavigate()
 	const dispatch = useDispatch<AppDispatch>()
-	const { token, errorMessage} = useSelector((s: RootState) => s.user)
 
+	const { errorMessage } = useSelector((s: RootState) => s.user)
 
-	useEffect(() => {
-		if (token) navigate('/')
-	}, [token])
 
 	const submit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -40,22 +36,7 @@ function Login() {
 	}
 
 	const sendLogin = async (email: string, password: string) => {
-		// console.log(email, ' ===== ', password);
-		// try {
-
 			dispatch(login({ email, password }))
-
-			// console.log(data);
-			// setError(undefined)
-
-			// dispatch(usersActions.setToken(data.access_token))
-			// navigate('/')
-		// } catch (e) {
-		// 	if (e instanceof AxiosError) {
-		// 		console.error(e)
-		// 		setError(e.response?.data.message)
-		// 	}
-		// }
 	}
 
 	return (

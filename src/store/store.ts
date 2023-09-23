@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userSlice, { JWT_PERSISTENT_STATE,  } from "./user.slice.ts";
+import userSlice, { JWT_PERSISTENT_STATE, } from "./user.slice.ts";
 import { removeStorage, saveStorage } from "./storage.ts";
 
 
@@ -15,6 +15,7 @@ store.subscribe(() => {
 		return
 	}
 	saveStorage(JWT_PERSISTENT_STATE, store.getState().user.token)
+	console.log('store.subscribe')
 })
 
 export type RootState = ReturnType<typeof store.getState>

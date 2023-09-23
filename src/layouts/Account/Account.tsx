@@ -2,9 +2,10 @@ import styles from './Account.module.css';
 
 import { NavLink, Outlet } from "react-router-dom";
 import Button from "../../components/Button/Button.tsx";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store/store.ts";
-import { usersActions } from "../../store/user.slice.ts";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store.ts";
+import { getProfile, usersActions } from "../../store/user.slice.ts";
+import { useEffect } from "react";
 
 
 function Account() {
@@ -26,11 +27,16 @@ function Account() {
 
 	const dispatch = useDispatch<AppDispatch>()
 
+	const profile = useSelector((s: RootState) => s.user.profile)
 
 
 	const logout = () => {
 		dispatch(usersActions.logout())
 	}
+
+	useEffect(() => {
+		dispatch(getProfile())
+	}, [])
 
 	return (
 		<div className={styles.layout_account + ' container'}>
@@ -40,6 +46,10 @@ function Account() {
 					<div className={styles.user_inform}>
 						<div className={styles.user_name}>IhorKh</div>
 						<div className={styles.user_email}>ihorkh@gmail.com</div>
+					</div>
+					<div className={styles.user_inform}>
+						<div className={styles.user_name}>{ profile?.name ?? ''}</div>
+						<div className={styles.user_email}>{ profile?.email ?? ''}</div>
 					</div>
 					<nav>
 						<ul className={styles.menu}>

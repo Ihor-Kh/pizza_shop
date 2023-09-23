@@ -1,0 +1,48 @@
+.login, .login > form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 330px;
+}
+
+.form_name {
+    color: var(--text);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 120%; /* 43.695px */
+}
+
+.form_control {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    color: var(--text-grey);
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.button {
+    width: 65%;
+    max-width: 250px;
+}
+
+.register {
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.register:hover {
+    color: var(--primary-hover);
+}
+
+.error {
+    background: var(--primary);
+    color: var(--text-light);
+    padding: 15px;
+    border-radius: 10px;
+}
