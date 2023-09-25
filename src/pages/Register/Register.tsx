@@ -3,12 +3,10 @@ import React, { FormEvent } from "react";
 import ItemForm from "../../components/ItemForm/ItemForm.tsx";
 import Button from "../../components/Button/Button.tsx";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { PREFIX } from "../../helpers/api.ts";
-import { LoginResponse } from "../../interfaces/auth.interface.ts";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store/store.ts";
-import { usersActions } from "../../store/user.slice.ts";
+
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store.ts";
+import { register, usersActions } from "../../store/user.slice.ts";
 
 type Register = {
 	name: {
@@ -27,6 +25,7 @@ function Register() {
 
 	const [validateForm, setValidateForm] = React.useState<boolean>(true)
 	const dispatch = useDispatch<AppDispatch>()
+	const { errorMessageRegister } = useSelector((s: RootState) => s.user)
 
 	const submit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -38,11 +37,12 @@ function Register() {
 
 	const sendRegister = async (name: string, email: string, password: string) => {
 		// dispatch(login({ email, password }))
+		dispatch(usersActions.clearErrorMessage())
 		if (name && email && password) {
 			console.log('send')
-			const { data } = await axios.post<LoginResponse>(`${ PREFIX }/auth/register`, { name, email, password })
-			console.log(data)
-			dispatch(usersActions.setToken(data.access_token))
+			dispatch(register({ name, email, password }))
+			// dispatch(usersActions.clearErrorMessage())
+			// dispatch(usersActions.setToken(data.access_token))
 		} else {
 			setValidateForm(false)
 		}
@@ -54,6 +54,7 @@ function Register() {
 			<h1 className='title'>Регистрация</h1>
 			<form onSubmit={ submit }>
 				{ !validateForm && <div className={ styles.error }>Форма заполнена не верно!</div> }
+				{ errorMessageRegister && <div className={ styles.error }>{ errorMessageRegister }</div> }
 
 				<ItemForm
 					label="Ваш email"

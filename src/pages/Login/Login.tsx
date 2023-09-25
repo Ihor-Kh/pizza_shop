@@ -24,7 +24,7 @@ function Login() {
 	// const [error, setError] = useState<string | undefined>()
 	const dispatch = useDispatch<AppDispatch>()
 
-	const { errorMessage } = useSelector((s: RootState) => s.user)
+	const { errorMessageLogin } = useSelector((s: RootState) => s.user)
 
 
 	const submit = async (e: FormEvent<HTMLFormElement>) => {
@@ -43,7 +43,7 @@ function Login() {
 		<div className={ styles.login }>
 			<h1 className='title'>Вход</h1>
 			<form onSubmit={ submit }>
-				{ errorMessage && <div className={ styles.error }>{ errorMessage }</div> }
+				{ errorMessageLogin && <div className={ styles.error }>{ errorMessageLogin }</div> }
 				<ItemForm
 					label="Ваш email"
 					id='email'

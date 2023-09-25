@@ -10,7 +10,8 @@ export const JWT_PERSISTENT_STATE = 'jwt_token'
 
 export interface UserState {
 	token: string | null
-	errorMessage?: string
+	errorMessageLogin?: string
+	errorMessageRegister?: string
 	profile?: Profile
 }
 
@@ -32,8 +33,26 @@ export const login = createAsyncThunk('user/login',
 			}
 			console.error(e)
 		}
-	}
-)
+	})
+
+export const register = createAsyncThunk('user/register',
+	async (params: { email: string, password: string, name: string }) => {
+		try {
+		   const { data } = await axios.post<LoginResponse>(`${ PREFIX }/auth/register`, {
+			   name: params.name,
+			   email: params.email,
+			   password: params.password
+		   })
+			console.log(data)
+			return data
+		}
+		catch (e) {
+			if (e instanceof AxiosError) {
+				throw new Error(e.response?.data?.message ?? e.message)
+			}
+		   console.error(e)
+		}
+	})
 
 export const getProfile = createAsyncThunk<Profile, void, { state: RootState }>('user/getProfile',
 	// @ts-ignore
@@ -68,7 +87,8 @@ export const userSlice = createSlice({
 			removeStorage(JWT_PERSISTENT_STATE)
 		},
 		clearErrorMessage: (state) => {
-			state.errorMessage = undefined
+			state.errorMessageLogin = undefined
+			state.errorMessageRegister = undefined
 		}
 	},
 	extraReducers: (builder) => {
@@ -79,12 +99,21 @@ export const userSlice = createSlice({
 
 		builder.addCase(login.rejected, (state, action) => {
 			state.token = null
-			state.errorMessage = action.error.message
+			state.errorMessageLogin = action.error.message
 		})
 
 		builder.addCase(getProfile.fulfilled, (state, action) => {
 			if (!action.payload) return
 			state.profile = action.payload
+		})
+
+		builder.addCase(register.fulfilled, (state, action) => {
+			state.token = action.payload?.access_token ?? null
+		})
+
+		builder.addCase(register.rejected, (state, action) => {
+			state.token = null
+			state.errorMessageRegister = action.error.message
 		})
 	}
 })
