@@ -11,6 +11,11 @@ import { useEffect } from "react";
 function Account() {
 	// const location = useLocation();
 
+
+
+	const dispatch = useDispatch<AppDispatch>()
+	const { items } = useSelector((s: RootState) => s.cart)
+
 	const navigation = [
 		{
 			title: 'Меню',
@@ -24,8 +29,6 @@ function Account() {
 			items: 0
 		}
 	]
-
-	const dispatch = useDispatch<AppDispatch>()
 
 	const profile = useSelector((s: RootState) => s.user.profile)
 
@@ -44,10 +47,6 @@ function Account() {
 				<div>
 					<img className={styles.user_avatar} src="/img/user_logo.png" alt="Иконка аккаунта"/>
 					<div className={styles.user_inform}>
-						<div className={styles.user_name}>IhorKh</div>
-						<div className={styles.user_email}>ihorkh@gmail.com</div>
-					</div>
-					<div className={styles.user_inform}>
 						<div className={styles.user_name}>{ profile?.name ?? ''}</div>
 						<div className={styles.user_email}>{ profile?.email ?? ''}</div>
 					</div>
@@ -58,6 +57,12 @@ function Account() {
 									<li className={`${styles.link} `} key={item.link}>
 										<img src={ `/img/${ item.icon }.svg` } alt={ item.icon }/>
 										<NavLink className={({ isActive }) => isActive ? styles.active : ''} to={ item.link }>{ item.title }</NavLink>
+										{ item.title === 'Корзина'
+											&& items.reduce((sum, item) => sum + item.count, 0) > 0
+											&& <span className={styles.count}>{
+												items.reduce((sum, item) => sum + item.count, 0)
+											}</span>
+										}
 									</li>
 								))
 							}

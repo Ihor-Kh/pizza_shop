@@ -1,0 +1,112 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.inform {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.inform_description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 10px 0;
+}
+
+.img_item {
+    width: 85px;
+    height: 85px;
+    border-radius: 20px;
+    background-position: center;
+    background-size: cover;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.price {
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.count_item {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.control_counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+    gap: 10px;
+}
+
+.control_btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.control_minus {
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.control_minus:hover {
+    color: var(--primary-hover);
+    border: 2px solid var(--primary-hover);
+}
+
+.control_plus {
+    color: var(--text-light);
+    background: var(--primary);
+    position: relative;
+}
+
+.control_plus:hover {
+    background: var(--primary-hover);
+}
+
+.line {
+    width: 15px;
+    height: 2px;
+    background-color: var(--primary);
+    border-radius: 10px;
+}
+
+.line_plus {
+    background-color: var(--text-light);
+    position: absolute;
+}
+
+.delete {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
+}

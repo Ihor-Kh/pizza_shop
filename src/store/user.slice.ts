@@ -63,7 +63,7 @@ export const getProfile = createAsyncThunk<Profile, void, { state: RootState }>(
 					Authorization: `Bearer ${ thunkAPI.getState().user.token }`
 				}
 			})
-			console.log(data)
+			// console.log(data)
 			return data
 		} catch (e) {
 			if (e instanceof AxiosError) {

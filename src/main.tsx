@@ -15,6 +15,7 @@ import Register from "./pages/Register/Register.tsx";
 import RequireAuth from "./helpers/RequireAuth.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.ts";
+import Order from "./pages/Order/Order.tsx";
 
 const Menu = React.lazy(() => import('./pages/Menu/Menu'))
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
 						// data: axios.get(`https://purpleschool.ru/pizza-api-demo/products/${ params.id }`).then( data  => data)
 					})
 				}
+			},
+			{
+				path: '/order',
+				element: <Order/>
 			}
 		]
 	},

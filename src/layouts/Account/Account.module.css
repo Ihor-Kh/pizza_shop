@@ -66,3 +66,15 @@
     color: var(--primary) !important;
 }
 
+.count {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--text-light);
+
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
