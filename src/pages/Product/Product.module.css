@@ -1,0 +1,23 @@
+.rating {
+    position: absolute;
+    bottom: -15px;
+    border-radius: 136px;
+    background: #FFF;
+    box-shadow: 0 6px 24px 0 rgba(254, 114, 76, 0.20);
+
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 9px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.img_item {
+    width: 350px;
+    height: 250px;
+    border-radius: 20px;
+    background-position: center;
+    background-size: cover;
+}
